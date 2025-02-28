@@ -1,10 +1,11 @@
 /*
-question : Metter tous les valeures zeros à la fin du tableau T et puis afficher le tableau T .
+question : effacer ensuite tooutes les concurens de la valeure zero dans le tableau T et 
+tasser les elements restants.
 
-algorithme   Metter_tous_les_valeures_zeros_a_la_fin_du_tableau_T_et_puis_afficher_le_tableau_T .
+algorithme effacement_des_concures_de_la_valeur_0_et_tasser_les_elements_restants 
 variable 
 		T : tableau entier 50 ;
-		i , j , a : entier ;
+		i , a : entier ;
 
 debut 
 
@@ -33,20 +34,10 @@ debut
 
 	ecrire ("\n\n Le nouveau tableau sans la valeure de zero sont : \n");
 	
-	j <- 0 ;
 	pour ( i <- 0 ; i < a ; i++ )
-		if ( T[i]  <> 0 ) 
-			T[j]  <- T[i] ;
-			j++ ; 
-		 finsi
-	finpour 
-
-	pour ( i <- j ; i < a ; i++ )
-		T[i] <- 0 ;
-	finpour
-
-	pour ( i <- 0 ; i < a ; i++)
-		ecrire (" T[",i,"] =",T[i] );
+		si ( T[i] <>  0 )
+			ecrire (\tT[i]);
+		finsi
 	finpour
 
 fin
@@ -90,26 +81,13 @@ int main ()
 	}
 
 	printf (" \n\n Le nouveau tableau sans la valeure de zero sont : \n");
-		
-	j = 0 ;
+	
 	for ( i = 0 ; i < a ; i++ )
 	{
-		if ( T[i]  != 0 ) 
+		if ( T[i] != 0 )
 		{
-			T[j]  = T[i] ; 
-	
-			j++ ; 
-		 }
-	}
-
-	for ( i = j ; i < a ; i++ )
-	{
-		T[i] = 0 ;
-	}
-
-	for( i = 0 ; i < a ; i++)
-	{
-		printf (" T{%d} = %d ", i , T[i]);
+			printf ("\t%d",T[i]);
+		}
 	}
 
 	return (0);
