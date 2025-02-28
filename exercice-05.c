@@ -4,8 +4,7 @@ Question :rangeer ensuit les elements du tableau T dans l'ordre inverse . Afiche
 algorithme Afichage_des_elements_du_tableau_T_dans_l'_ordre_inverse_Aficher_le_tableau_résultant .
 variable 
 		T : tableau entier 50 ;
-		TF : tableau entier 50 ;
-		i , a : entier ;
+		j , i , a : entier ;
 
 debut 
 	i <- 0 ;
@@ -31,17 +30,34 @@ debut
 	pour ( i <- 0 ; i < a ; i++)
 		ecrire ("\t",T[i]);
 	finpour
-
-	j <- a - 1 ;
-	pour ( i <- 0 ; i < a ; i++ )
-			TF[j] <- T[i] ;
-			j-- ;
-	finpour
-
+ 
 	ecrire ("\n\n Le tableau T à l' ordre inverse est :\n");
 
-	pour ( j <- 0 ; j < a ; j++ )
-			ecrire("\t",TF[j] );
+	si (( a % 2) = 0 )
+
+		j <- a - 1 ;
+		pour ( i <- 0 ; i <(a/2)  ; i++)
+			temp  <- T[i] ;
+			T[i] <- T[j] ;
+			T[j] <- temp ;
+			j--;
+	 	finpour
+	else 
+	 	j <- a - 1 ;
+	 	pour ( i <- 0 ; i < (( a - 1)/2) + 1 ; i++)
+	 		if ( i = j )
+	 			T[i] = T[j];
+	 		else 
+	 			temp  <- T[i] ;
+				T[i] <- T[j] ;
+				T[j] <- temp ;
+	 		finsi
+	 		j--;
+	 	finpour
+	finsi
+
+	pour ( i <- 0 ; i < a ; i++)
+		printf (" \tT[",i,"] =",T[i] );
 	finpour
 
 fin 
@@ -55,9 +71,8 @@ fin
 int main ()
 {
 	int T[50] ; /* int T[taille] ; */
-	int TF[50] ; /* int TF[taille] ; */
-	int i , a , j ;
-	
+	int i , a , j , temp  ;
+
 	i = 0 ;
 	do
 	{
@@ -83,18 +98,45 @@ int main ()
 	{
 		printf ("\t%d ",T[i]);
 	}
-	j = a - 1 ;
-	for ( i = 0 ; i <= a ; i++)
-	{
-		TF[j] = T[i] ;
-		j--  ;
- 	}
- 	printf ("\n\n Le tableau T à l' ordre inverse est : \n");
 
- 	for ( j = 0 ; j < a ; j++)
- 	{
- 		printf ("\t%d",TF[j]);
- 	}
+	printf ("\n\n Le tableau T à l' ordre inverse est: \n");
+
+	if (( a % 2) == 0 )
+	{
+
+		j = a - 1 ;
+		for ( i = 0 ; i <(a/2)  ; i++)
+		{
+			temp  = T[i] ;
+			T[i] = T[j] ;
+			T[j] = temp ;
+			j--;
+	 	}
+	}
+	else 
+	{
+	 	j = a - 1 ;
+
+	 	for ( i = 0 ; i < (( a - 1)/2) + 1 ; i++)
+	 	{
+	 		if ( i == j )
+	 		{
+	 			T[i] == T[j];
+	 		}
+	 		else 
+	 		{
+	 			temp  = T[i] ;
+				T[i] = T[j] ;
+				T[j] = temp ;
+	 		}
+	 		j--;
+	 	}
+	}
+
+	for ( i = 0 ; i < a ; i++)
+	{
+		printf (" \tT[%d] = %d", i , T[i]);
+	}
 
 	return (0);
 }
